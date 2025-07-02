@@ -17,8 +17,38 @@ const codonTable = {
   GGU: "G", GGC: "G", GGA: "G", GGG: "G"
 };
 
+function handleTranslate() {
+  const dnaInput = document.getElementById("dnaInput").value.trim();
+  const fileInput = document.getElementById("fastaFile");
+
+  if (dnaInput !== "") {
+    processDNA();
+  } else if (fileInput.files.length > 0) {
+    uploadFasta();
+  } else {
+    alert("Please enter a dna sequence or upload a fasta file");
+  }
+}
+
+function clearInput() {
+  document.getElementById("dnaInput").value = "";       // Textfeld leeren
+  const fileInput = document.getElementById("fastaFile");
+  
+  // Um das File-Input zurückzusetzen, setze den Wert auf leeren String
+  fileInput.value = "";
+
+  // Optional: Auch die Ausgaben löschen
+  document.getElementById("rnaOutput").textContent = "";
+  document.getElementById("proteinOutput").textContent = "";
+}
+
 function processDNA() {
   const dnaInput = document.getElementById("dnaInput").value.toUpperCase().replace(/[^ATGC]/g, "");
+
+  if (dnaInput === "") {
+    return;
+  }
+
   const rna = dnaInput.replace(/T/g, "U");
   document.getElementById("rnaOutput").textContent = rna;
 
@@ -35,7 +65,6 @@ function processDNA() {
 function uploadFasta() {
   const fileInput = document.getElementById("fastaFile");
   if (!fileInput.files.length) {
-    alert("Please select a FASTA file first!");
     return;
   }
 
@@ -43,17 +72,11 @@ function uploadFasta() {
   const reader = new FileReader();
 
   reader.onload = function (e) {
-    const text = e.target.result;
-    // Filter out lines starting with '>', join the rest, uppercase, remove non-DNA chars
-    const lines = text.split(/\r?\n/);
-    const sequence = lines
-      .filter(line => !line.startsWith(">"))
-      .join("")
-      .toUpperCase()
-      .replace(/[^ATGC]/g, "");
+    const lines = e.target.result.split(/\r?\n/);
+    const sequence = lines.filter(line => !line.startsWith(">")).join("").toUpperCase().replace(/[^ATGC]/g, "");
 
-    if (!sequence) {
-      alert("No valid DNA sequence found in FASTA file.");
+    if (sequence === "") {
+      alert("No valid dna sequence found in fasta file");
       return;
     }
 
@@ -63,6 +86,7 @@ function uploadFasta() {
 
   reader.readAsText(file);
 }
+
 
 // Dark mode toggle
 document.getElementById("darkModeToggle").addEventListener("change", function () {
