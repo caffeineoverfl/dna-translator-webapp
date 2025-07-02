@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNA to Protein Translator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>DNA to Protein Translator</h1>
+
+        <div class="toggle-container">
+            <span class="icon">🌞</span>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="icon">🌙</span>
+        </div>
+
+        <textarea id="dnaInput" placeholder="Enter DNA sequence (e.g., ATGCGT...)"></textarea>
+
+        <div class="file-upload">
+            <input type="file" id="fastaFile" accept=".fasta,.fa" />
+            <button onclick="uploadFasta()">Upload FASTA</button>
+        </div>
+
+        <button onclick="processDNA()">Translate</button>
+
+        <div class="output">
+            <h3>mRNA Sequence:</h3>
+            <p id="rnaOutput"></p>
+
+            <h3>Protein Sequence:</h3>
+            <p id="proteinOutput"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
