@@ -36,6 +36,12 @@ textarea {
   padding: 0.5rem;
 }
 
+body.dark textarea {
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+}
+
 button {
   padding: 10px 20px;
   background: #0077cc;
