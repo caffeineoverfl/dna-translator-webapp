@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <h1>DNA to Protein Translator</h1>
+        <h1>DNA Translator</h1>
 
         <div class="toggle-container">
             <span class="icon">🌞</span>
@@ -25,10 +25,9 @@
 
         <div class="file-upload">
             <input type="file" id="fastaFile" accept=".fasta,.fa" />
-            <button onclick="uploadFasta()">Upload FASTA</button>
         </div>
 
-        <button onclick="processDNA()">Translate</button>
+        <button onclick="processDNA(),uploadFasta()">Translate</button>
 
         <div class="output">
             <h3>mRNA Sequence:</h3>
