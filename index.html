@@ -24,11 +24,11 @@
         <textarea id="dnaInput" placeholder="Enter DNA sequence (e.g., ATGCGT...)"></textarea>
 
         <div class="file-upload">
-            <input type="file" id="fastaFile" accept=".fasta,.fa" />
+            <p class="upload-txt">Upload FASTA file:</p>
+            <input type="file" id="fastaFile" accept=".fasta,.fa"/>
+            <button onclick="handleTranslate()"class="btn">Translate</button>
+            <button onclick="clearInput()" class="btn">Clear Input</button>
         </div>
-
-        <button onclick="handleTranslate()">Translate</button>
-        <button onclick="clearInput()">Clear Input</button>
 
         <div class="output">
             <h3>RNA Sequence:</h3>
