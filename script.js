@@ -31,13 +31,13 @@ function handleTranslate() {
 }
 
 function clearInput() {
-  document.getElementById("dnaInput").value = "";       // Textfeld leeren
+  document.getElementById("dnaInput").value = "";       // clear textfield
   const fileInput = document.getElementById("fastaFile");
   
-  // Um das File-Input zurückzusetzen, setze den Wert auf leeren String
+  // setting to an empty string to clear the selection
   fileInput.value = "";
 
-  // Optional: Auch die Ausgaben löschen
+  // clearing outputs
   document.getElementById("rnaOutput").textContent = "";
   document.getElementById("proteinOutput").textContent = "";
 }
